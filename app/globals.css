@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif !important;
+  }
+
+/* Sign in and sign up  */
+.auth-container {
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cl-formFieldHintText,
+  .cl-internal-1dauvpw {
+    display: none !important;
+  }
+  .cl-card{
+    border-radius: 10px 10px 0px 0px !important;
+  }
+  
+  .cl-formButtonPrimary {
+    background-color: black !important;
+    color: white !important;
+  }
+  
+  .ant-form-item {
+    margin-bottom: 0px !important;
+  }
+  
+  .ant-form-item-label {
+    padding: 0px !important;
+  }
