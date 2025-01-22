@@ -1,10 +1,25 @@
 import { Button} from 'antd';
 import { UserButton } from "@clerk/nextjs";
+import {currentUser } from "@clerk/nextjs/server";
+export default async function Home() {
+  let userId="";
+  let name="";
+  let email="";
+  const currentUserData= await currentUser();
+  console.log(currentUserData)
+  if(currentUserData){
+    userId=currentUserData?.id;
+    name=currentUserData?.firstName + " "+currentUserData?.lastName;
+    email=currentUserData?.emailAddresses[0].emailAddress;
 
-export default function Home() {
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="flex flex-col items-center">
       <h1>Welcome to Hotel Taha</h1>
+      <h1>Clerk:{userId}</h1>
+      <h1>name: {name}</h1>
+      <h1>email: {email}</h1>
       <Button type="default">Start</Button>
       <UserButton afterSignOutUrl="/sign-in"/>
     </div>
