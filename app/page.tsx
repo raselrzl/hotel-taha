@@ -2,10 +2,11 @@ import { Button} from 'antd';
 import { UserButton } from "@clerk/nextjs";
 import { connectMongoDB } from '@/config/db';
 import { GetCurrentUserFromMongoDB } from '@/server-actions/users';
+import { UserType } from './interfaces';
 connectMongoDB()
 export default async function Home() {
   const response:any=await GetCurrentUserFromMongoDB();
-  let mongouser=null;
+  let mongouser : UserType | null=null;
   if(response.success){
     mongouser=response.data
   }
