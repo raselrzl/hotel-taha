@@ -13,11 +13,11 @@ function UserInfo({ loggedInUserData }: { loggedInUserData: UserType }) {
         onClick={() => setShowSidebar(!showSidebar)}
       />
 
-      {/* {showSidebar && (
+      {showSidebar && (
         <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} 
          loggedInUserData={loggedInUserData}
         />
-      )} */}
+      )}
     </div>
   );
 }
