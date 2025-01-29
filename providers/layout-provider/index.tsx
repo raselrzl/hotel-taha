@@ -5,6 +5,7 @@ import { GetCurrentUserFromMongoDB } from "@/server-actions/users";
 import { message } from "antd";
 import { usePathname } from "next/navigation";
 import { UserType } from "@/app/interfaces";
+import Spinner from "@/app/components/spinner";
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
   const [loggedInUserData, setLoggedInUserData] =
@@ -15,7 +16,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     pathname.includes("/sign-in") || pathname.includes("/sign-up");
   const isAdminRoute = pathname.includes("/admin");
 
-  /* const [loading, setLoading] = React.useState(true); */
+  const [loading, setLoading] = React.useState(true);
 
  /*  const getUserData = async () => {
     try {
@@ -36,6 +37,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
 
   const getUserData = async () => {
     try {
+      setLoading(true);
       const response = await fetch("/api/get-user");
       const data = await response.json();
   
@@ -46,22 +48,10 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
       }
     } catch (error: any) {
       console.log(error.message);
+    } finally {
+      setLoading(false);
     }
   };
-/*   const getUserData = async () => {
-    try {
-      const response = await fetch("/api/get-user");
-      const data = await response.json();
-  
-      if (data.success) {
-        setLoggedInUserData(data.data);
-      } else {
-        throw new Error(data.message);
-      }
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  }; */
     
   React.useEffect(() => {
     if (!loggedInUserData && !isAuthRoute) {
@@ -84,9 +74,9 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     );
   }
 
- /*  if (loading) {
+  if (loading) {
     return <Spinner fullHeight />;
-  } */
+  }
 
   return (
     <div>
