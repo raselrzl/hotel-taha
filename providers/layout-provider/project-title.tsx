@@ -10,7 +10,11 @@ function ProjectTitle() {
         router.push("/");
       }}
     >
-      logo
+      <img
+          src="/logo-3.png"
+          alt=""
+          className="w-[140px] h-[25px] pt-[2px]"
+      />
     </div>
   );
 }

@@ -1,22 +1,23 @@
 "use client";
 import React from "react"; 
 import Header from "./header";/*
-import { UserType } from "@/interfaces";
 import { GetCurrentUserFromMongoDB } from "@/server-actions/users";
 import { message } from "antd";
 import { usePathname } from "next/navigation";
 import Spinner from "@/components/spinner"; */
+import { UserType } from "@/app/interfaces";
+import { GetCurrentUserFromMongoDB } from "@/server-actions/users";
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
- /*  const [loggedInUserData, setLoggedInUserData] =
+ const [loggedInUserData, setLoggedInUserData] =
     React.useState<UserType | null>(null);
-
+/*  
   const pathname = usePathname();
   const isAuthRoute =
     pathname.includes("/sign-in") || pathname.includes("/sign-up");
   const isAdminRoute = pathname.includes("/admin"); */
 
- /*  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(true);
 
   const getUserData = async () => {
     try {
@@ -24,22 +25,23 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
       const response = await GetCurrentUserFromMongoDB();
       if (response.success) {
         setLoggedInUserData(response.data);
+        console.log(response.data)
       } else {
         throw new Error(response.message);
       }
-    } catch (error: any) { */
-     /*  message.error(error.message);
-      console.log(error.message); */
- /*    } finally {
+    } catch (error: any) {
+     /*  message.error(error.message); */
+      console.log(error.message);
+    } finally {
       setLoading(false);
     }
-  }; */
+  };
 
- /*  React.useEffect(() => {
-    if (!loggedInUserData && !isAuthRoute) {
+  React.useEffect(() => {
+    if (!loggedInUserData /* && !isAuthRoute */) {
       getUserData();
     }
-  }, []); */
+  }, []);
 
  /*  if (isAuthRoute) {
     return children;
@@ -62,7 +64,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <div>
-      <Header />
+      <Header loggedInUserData={loggedInUserData} />
       <div className="px-5 lg:px-20 mt-10">{children}</div>
     </div>
   );
