@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@clerk/nextjs": "^6.9.15",
     "antd": "^5.23.2",
     "lucide-react": "^0.474.0",
